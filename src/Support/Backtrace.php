@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Pest\Support;
 
 use Pest\Exceptions\ShouldNotHappen;
+use Phar;
 
 /**
  * @internal
@@ -28,6 +29,10 @@ final class Backtrace
         foreach (debug_backtrace(self::BACKTRACE_OPTIONS) as $trace) {
             if (Str::endsWith($trace[self::FILE], (string) realpath('vendor/phpunit/phpunit/src/Util/FileLoader.php'))) {
                 break;
+            }
+
+            if (Phar::running() !== '' && (Str::startsWith($trace[self::FILE], 'phar:') || strpos($trace['args'][0] ?? '', 'pest.phar') !== false)) {
+                continue;
             }
 
             $current = $trace;

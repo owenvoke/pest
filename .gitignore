@@ -9,3 +9,4 @@ coverage.xml
 *.swp
 *.swo
 .vscode/
+/bin/pest.phar

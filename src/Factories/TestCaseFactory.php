@@ -12,6 +12,7 @@ use Pest\Exceptions\ShouldNotHappen;
 use Pest\Support\HigherOrderMessageCollection;
 use Pest\Support\NullClosure;
 use Pest\TestSuite;
+use Phar;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -168,7 +169,7 @@ final class TestCaseFactory
             }, $filename);
         }
 
-        $filename     = (string) realpath($filename);
+        $filename     = Phar::running() !== '' ? $filename : (string) realpath($filename);
         $rootPath     = TestSuite::getInstance()->rootPath;
         $relativePath = str_replace($rootPath . DIRECTORY_SEPARATOR, '', $filename);
         $relativePath = dirname(ucfirst($relativePath)) . DIRECTORY_SEPARATOR . basename($relativePath, '.php');

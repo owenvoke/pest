@@ -1,0 +1,28 @@
+{
+    "directories": [
+        "src",
+        "stubs",
+        "vendor"
+    ],
+    "files": [
+        "README.md",
+        "LICENSE.md",
+        "composer.json"
+    ],
+    "finder": [{
+        "notName": "/LICENSE|.*\\.md|.*\\.dist|Makefile|composer\\.json|composer\\.lock/",
+        "exclude": [
+            "tests",
+            "Tests"
+        ],
+        "in": "vendor"
+    }],
+    "force-autodiscovery": true,
+    "exclude-composer-files": false,
+    "compactors": [
+        "KevinGH\\Box\\Compactor\\Php",
+        "KevinGH\\Box\\Compactor\\Json"
+    ],
+    "banner": false,
+    "algorithm": "SHA256"
+}

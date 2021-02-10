@@ -1,4 +1,6 @@
 {
+    "output": "bin/pest.phar",
+    "main": "bin/pest-phar.stub.php",
     "directories": [
         "src",
         "stubs",

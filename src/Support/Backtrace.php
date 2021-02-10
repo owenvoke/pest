@@ -27,7 +27,7 @@ final class Backtrace
         $current = null;
 
         foreach (debug_backtrace(self::BACKTRACE_OPTIONS) as $trace) {
-            if (Str::endsWith($trace[self::FILE], (string) realpath('vendor/phpunit/phpunit/src/Util/FileLoader.php'))) {
+            if (Phar::running() === '' && Str::endsWith($trace[self::FILE], (string) realpath('vendor/phpunit/phpunit/src/Util/FileLoader.php'))) {
                 break;
             }
 
